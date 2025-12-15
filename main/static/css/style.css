@@ -1,0 +1,244 @@
+/* main/static/css/style.css - Versión Final Limpia y Profesional */
+
+/* --------------------------------- */
+/* 0. PALETA DE COLORES Y VARIABLES */
+/* --------------------------------- */
+:root {
+    /* Color Primario: Azul Institucional/Profesional */
+    --primary-color: #1e56a7; 
+    /* Color de Acento: Dorado/Amarillo Llamativo (para CV y resaltados) */
+    --accent-color: #f7b731; 
+    /* Color de Fondo: Blanco/Gris muy claro */
+    --background-light: #f8f9fa;
+    /* Color de Texto Principal (Negro/Muy Oscuro) */
+    --text-dark: #212529; 
+    /* Color de Navbar/Footer: Oscuro para contraste */
+    --navbar-footer-dark: #1f2937;
+}
+
+/* --------------------------------- */
+/* 1. CONFIGURACIÓN GENERAL Y TIPOGRAFÍA */
+/* --------------------------------- */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-light); 
+    padding-top: 70px; /* Espacio para el header fijo */
+    margin: 0;
+    color: var(--text-dark); /* Texto principal en negro */
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: var(--text-dark); /* Títulos en negro */
+}
+
+/* Contenedor de la imagen de fondo (Efecto Parallax) */
+#background-image-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Asegúrate de que 'background.jpg' esté en main/static/img/ */
+    background-image: url("{% static 'img/background.jpg' %}"); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Mantiene el fondo fijo */
+    z-index: -2; 
+    /* El transform con scale ayuda con el Parallax, pero lo eliminamos para simplicidad si causa problemas */
+}
+
+@media (max-width: 768px) {
+    #background-image-fixed {
+        background-attachment: scroll; 
+    }
+}
+
+/* --------------------------------- */
+/* 2. ENCABEZADO Y NAVEGACIÓN */
+/* --------------------------------- */
+#main-nav {
+    /* Barra de navegación oscura para contraste */
+    background-color: var(--navbar-footer-dark) !important; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.navbar-brand { font-size: 1.8rem; }
+
+.nav-link {
+    color: white !important;
+    transition: color 0.3s;
+}
+.nav-link:hover {
+    color: var(--accent-color) !important; /* Resalta en dorado */
+}
+
+/* Estilos de botones de navegación */
+/* 1. Botón CV (Acento Dorado/Llamativo) */
+.btn-warning {
+    background-color: var(--accent-color) !important; 
+    border-color: var(--accent-color) !important;
+    color: var(--text-dark) !important; 
+    font-weight: bold;
+}
+.btn-warning:hover {
+    background-color: #e0a827 !important;
+    border-color: #e0a827 !important;
+}
+
+/* 2. Botón de WhatsApp (Mantiene el verde estándar) */
+.btn-success {
+    background-color: #25D366 !important; 
+    border-color: #25D366 !important;
+    color: white !important;
+    font-weight: bold;
+}
+.btn-success:hover {
+    background-color: #128C7E !important;
+    border-color: #128C7E !important;
+}
+
+/* 3. Botón Gmail/Contacto (Outline Blanco sobre oscuro) */
+.btn-outline-light {
+    border-color: white !important;
+    color: white !important;
+}
+.btn-outline-light:hover {
+    background-color: white !important;
+    color: var(--text-dark) !important;
+}
+
+
+/* --------------------------------- */
+/* 3. SECCIÓN ACERCA DE MÍ (HERO) */
+/* --------------------------------- */
+#about {
+    /* Overlay semi-transparente sobre la imagen de fondo */
+    background-color: rgba(30, 86, 167, 0.85); /* Azul profesional */
+    min-height: 80vh; 
+    color: white !important; /* El texto en esta sección debe ser blanco */
+    position: relative; 
+    z-index: 1;
+}
+
+#about h2, #about h3, #about p {
+    color: white !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.profile-photo {
+    width: 180px; 
+    height: 180px;
+    object-fit: cover; 
+    border-radius: 50%; 
+    border: 5px solid var(--accent-color); /* Borde de acento dorado */
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.3), 0 5px 15px rgba(0, 0, 0, 0.3); 
+    transition: transform 0.3s ease;
+    position: relative; 
+    z-index: 2; 
+}
+
+.profile-photo:hover {
+    transform: scale(1.05) rotate(1deg);
+}
+
+
+/* --------------------------------- */
+/* 4. SECCIÓN DE CERTIFICACIONES */
+/* --------------------------------- */
+#certifications h2 {
+    color: var(--primary-color) !important;
+}
+
+.certification-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer; 
+    border: 1px solid #ddd !important;
+    border-top: 5px solid var(--primary-color) !important; /* Borde superior en azul */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+.certification-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.cert-image-container { height: 200px; overflow: hidden; }
+.cert-image-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+.certification-card:hover img { transform: scale(1.05); }
+
+
+/* --------------------------------- */
+/* 5. SECCIÓN DE PROYECTOS */
+/* --------------------------------- */
+.project-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid var(--accent-color); /* Borde de acento en el lateral */
+}
+
+.project-card:hover {
+    transform: translateY(-8px); 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); 
+}
+
+.project-card h3 {
+    color: var(--text-dark);
+}
+.project-card p.description {
+    color: #555;
+}
+.project-card p.tech-used {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.image-container { height: 250px; overflow: hidden; border-radius: 8px; margin-bottom: 20px; }
+.project-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease-in-out; }
+.project-card:hover img { transform: scale(1.05); }
+
+/* Botones dentro de la tarjeta de proyecto */
+.btn-dark {
+    background-color: var(--text-dark) !important;
+    border-color: var(--text-dark) !important;
+}
+.btn-primary { 
+    background-color: var(--primary-color) !important; 
+    border-color: var(--primary-color) !important; 
+}
+.btn-primary:hover { 
+    background-color: #143e77 !important; 
+    border-color: #143e77 !important; 
+}
+
+
+/* --------------------------------- */
+/* 6. FOOTER */
+/* --------------------------------- */
+footer {
+    background-color: var(--navbar-footer-dark) !important;
+    color: #ccc;
+}
+
+
+/* --------------------------------- */
+/* 7. INTERACCIONES GENERALES Y RESPONSIVE */
+/* --------------------------------- */
+.btn {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+@media (min-width: 992px) {
+    /* Efecto "diente de sierra" en tarjetas de proyectos */
+    .row > .col-lg-6:nth-child(even) .animate__card {
+        margin-top: 50px; 
+    }
+}
