@@ -1,0 +1,345 @@
+/* main/static/css/style.css - Versión Final Limpia y Profesional */
+
+/* --------------------------------- */
+/* 0. PALETA DE COLORES Y VARIABLES */
+/* --------------------------------- */
+:root {
+    /* Color Primario: Azul Institucional/Profesional */
+    --primary-color: #1e56a7; 
+    /* Color de Acento: Dorado/Amarillo Llamativo (para CV y resaltados) */
+    --accent-color: #f7b731; 
+    /* Color de Fondo: Blanco/Gris muy claro */
+    --background-light: #f8f9fa;
+    /* Color de Texto Principal (Negro/Muy Oscuro) */
+    --text-dark: #212529; 
+    /* Color de Navbar/Footer: Oscuro para contraste */
+    --navbar-footer-dark: #1f2937;
+}
+
+/* --------------------------------- */
+/* 1. CONFIGURACIÓN GENERAL Y TIPOGRAFÍA */
+/* --------------------------------- */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-light); 
+    padding-top: 70px; /* Espacio para el header fijo */
+    margin: 0;
+    color: var(--text-dark); /* Texto principal en negro */
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: var(--text-dark); /* Títulos en negro */
+}
+
+/* Contenedor de la imagen de fondo (Efecto Parallax) */
+#background-image-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Asegúrate de que 'background.jpg' esté en main/static/img/ */
+    background-image: url("{% static 'img/background.jpg' %}"); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Mantiene el fondo fijo */
+    z-index: -2; 
+}
+
+/* --------------------------------- */
+/* 2. ENCABEZADO Y NAVEGACIÓN */
+/* --------------------------------- */
+#main-nav {
+    /* Barra de navegación oscura para contraste */
+    background-color: var(--navbar-footer-dark) !important; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.navbar-brand { font-size: 1.8rem; }
+
+.nav-link {
+    color: white !important;
+    transition: color 0.3s;
+}
+.nav-link:hover {
+    color: var(--accent-color) !important; /* Resalta en dorado */
+}
+
+/* Estilos de botones de navegación */
+.btn-warning {
+    background-color: var(--accent-color) !important; 
+    border-color: var(--accent-color) !important;
+    color: var(--text-dark) !important; 
+    font-weight: bold;
+}
+.btn-warning:hover {
+    background-color: #e0a827 !important;
+    border-color: #e0a827 !important;
+}
+
+.btn-success {
+    background-color: #25D366 !important; 
+    border-color: #25D366 !important;
+    color: white !important;
+    font-weight: bold;
+}
+.btn-success:hover {
+    background-color: #128C7E !important;
+    border-color: #128C7E !important;
+}
+
+.btn-outline-light {
+    border-color: white !important;
+    color: white !important;
+}
+.btn-outline-light:hover {
+    background-color: white !important;
+    color: var(--text-dark) !important;
+}
+
+
+/* --------------------------------- */
+/* 3. SECCIÓN ACERCA DE MÍ (HERO) */
+/* --------------------------------- */
+#about {
+    /* Overlay semi-transparente sobre la imagen de fondo */
+    background-color: rgba(30, 86, 167, 0.85); /* Azul profesional */
+    min-height: 80vh; 
+    color: white !important; 
+    position: relative; 
+    z-index: 1;
+}
+
+#about h2, #about h3, #about p {
+    color: white !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.profile-photo {
+    width: 180px; 
+    height: 180px;
+    object-fit: cover; 
+    border-radius: 50%; 
+    border: 5px solid var(--accent-color); 
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.3), 0 5px 15px rgba(0, 0, 0, 0.3); 
+    transition: transform 0.3s ease;
+    position: relative; 
+    z-index: 2; 
+}
+
+.profile-photo:hover {
+    transform: scale(1.05) rotate(1deg);
+}
+
+
+/* --------------------------------- */
+/* 4. SECCIÓN DE CERTIFICACIONES */
+/* --------------------------------- */
+#certifications h2 {
+    color: var(--primary-color) !important;
+}
+
+.certification-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer; 
+    border: 1px solid #ddd !important;
+    border-top: 5px solid var(--primary-color) !important; 
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+.certification-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.cert-image-container { height: 200px; overflow: hidden; }
+.cert-image-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+.certification-card:hover img { transform: scale(1.05); }
+
+
+/* --------------------------------- */
+/* 5. SECCIÓN DE PROYECTOS */
+/* --------------------------------- */
+.project-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid var(--accent-color); 
+}
+
+.project-card:hover {
+    transform: translateY(-8px); 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); 
+}
+
+.project-card h3 {
+    color: var(--text-dark);
+}
+.project-card p.description {
+    color: #555;
+}
+.project-card p.tech-used {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.image-container { height: 250px; overflow: hidden; border-radius: 8px; margin-bottom: 20px; }
+.project-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease-in-out; }
+.project-card:hover img { transform: scale(1.05); }
+
+/* Botones dentro de la tarjeta de proyecto */
+.btn-dark {
+    background-color: var(--text-dark) !important;
+    border-color: var(--text-dark) !important;
+}
+.btn-primary { 
+    background-color: var(--primary-color) !important; 
+    border-color: var(--primary-color) !important; 
+}
+.btn-primary:hover { 
+    background-color: #143e77 !important; 
+    border-color: #143e77 !important; 
+}
+
+
+/* --------------------------------- */
+/* 6. FOOTER */
+/* --------------------------------- */
+footer {
+    background-color: var(--navbar-footer-dark) !important;
+    color: #ccc;
+}
+
+
+/* --------------------------------- */
+/* 7. INTERACCIONES GENERALES Y RESPONSIVE (OPTIMIZADO) */
+/* --------------------------------- */
+.btn {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* DESKTOP/TABLET GRANDE */
+@media (min-width: 992px) {
+    /* **IMPORTANTE:** Remover el margen superior de proyectos en móvil */
+    .row > .col-lg-6:nth-child(even) .animate__card {
+        margin-top: 50px; 
+    }
+}
+
+/* ---------------- MOBILE OPTIMIZATION ---------------- */
+
+/* TABLET PEQUEÑA Y MÓVILES LANDSCAPE (<= 768px) */
+@media (max-width: 768px) {
+    
+    /* 2. ENCABEZADO Y NAVEGACIÓN */
+    .navbar-nav {
+        width: 100%;
+        /* Usamos gap para asegurar espacio entre elementos */
+        gap: 0.5rem; 
+        text-align: center;
+        padding-top: 10px; 
+        padding-bottom: 10px;
+    }
+
+    /* **AJUSTE CLAVE:** Los botones toman todo el ancho disponible en la nav mobile */
+    .navbar-nav .nav-item {
+        margin: 0.25rem 0 !important; 
+        width: 100%;
+    }
+    
+    .navbar-nav .btn {
+        width: 90%; /* Ancho ligeramente más grande para los botones */
+        margin: 0 auto; 
+        display: block; 
+    }
+
+    /* 3. SECCIÓN ACERCA DE MÍ (HERO) */
+    #about {
+        padding: 4rem 1rem; 
+    }
+
+    .profile-photo {
+        width: 140px;
+        height: 140px;
+    }
+
+    .title-about {
+        font-size: 2rem !important;
+    }
+
+    .title-subtitle {
+        font-size: 1.25rem !important;
+    }
+    
+    #background-image-fixed {
+        background-attachment: scroll; /* Desactivar el efecto parallax en móviles */
+    }
+
+    /* Ajuste de tarjetas en general */
+    .certification-card, .project-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    /* 5. Secciones */
+    #certifications, #projects {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+
+/* MÓVILES PEQUEÑOS (<= 576px) */
+@media (max-width: 576px) {
+
+    body {
+        padding-top: 60px;
+    }
+    
+    /* 3. SECCIÓN ACERCA DE MÍ (HERO) */
+    #about {
+        min-height: auto;
+        padding: 3rem 0.5rem; /* Reducir padding horizontal */
+        text-align: center;
+    }
+
+    .title-about {
+        font-size: 1.5rem !important; 
+    }
+
+    .title-subtitle {
+        font-size: 1rem !important;
+    }
+
+    .intro {
+        font-size: 0.9rem !important;
+    }
+
+    .badge {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem !important;
+        display: block; 
+        margin-top: 1rem;
+    }
+
+    /* 4. SECCIÓN DE CERTIFICACIONES */
+    .cert-image-container {
+        height: 140px;
+    }
+    
+    /* 5. SECCIÓN DE PROYECTOS */
+    .image-container {
+        height: 160px;
+    }
+    
+    .project-card {
+        padding: 15px;
+    }
+}
