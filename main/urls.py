@@ -1,8 +1,8 @@
 # main/urls.py
+
 from django.urls import path
-from . import views
+from . import views # Asegúrate que esto sea correcto
 
 urlpatterns = [
-    # Mapea la ruta vacía (/) a la función home de views.py
-    path('', views.home, name='home'), 
+    path('', views.home, name='home'), # Verifica que views.home exista y no tenga errores
 ]
